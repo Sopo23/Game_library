@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/whishlist")
 public class WhishlistController {
-    @Autowired
-    public WhishListService whishListService;
+    private final WhishListService whishListService;
 
+    public WhishlistController(WhishListService whishListService) {
+        this.whishListService = whishListService;
+    }
 
     @PostMapping("/createWhishlist/{username}")
     public ResponseEntity<Whishlist> createWhishlist(@PathVariable String username){

@@ -11,11 +11,15 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-    @Autowired
-    public CustomerRepository customerRepository;
-    @Autowired
-    public GameRepository gameRepository;
-    public Customer createAccount(String username,String password){
+    private final CustomerRepository customerRepository;
+    private final GameRepository gameRepository;
+
+    public CustomerService(CustomerRepository customerRepository, GameRepository gameRepository) {
+        this.customerRepository = customerRepository;
+        this.gameRepository = gameRepository;
+    }
+
+    public Customer createAccount(String username, String password){
        Customer customer=new Customer();
        customer.setUsername(username);
        customer.setPassword(password);

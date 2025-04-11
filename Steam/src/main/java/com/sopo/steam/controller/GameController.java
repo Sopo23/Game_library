@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Controller
-
+@RestController
+@RequestMapping("/games")
 public class GameController {
-    @Autowired
-    public GameService gameService;
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
+
     @GetMapping ("/FindGame/{name}")
     public ResponseEntity<Game> findGame(@PathVariable String name){
         return new ResponseEntity<>(

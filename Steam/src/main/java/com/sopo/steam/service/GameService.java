@@ -9,9 +9,11 @@ import java.util.List;
 
 @Service
 public class GameService {
-    @Autowired
-    public GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
+    public GameService(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
 
     public Game findGame(String name){
         Game game=gameRepository.findGameByName(name);

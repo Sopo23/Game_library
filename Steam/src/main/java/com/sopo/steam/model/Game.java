@@ -9,8 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="Game")

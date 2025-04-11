@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
+@RequestMapping("/customer")
 public class CustomerController {
-@Autowired
-    public CustomerService customerService;
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @PostMapping("/newCustomer")
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
         return new ResponseEntity<>(customerService.createAccount(customer.getUsername(),customer.getPassword()),

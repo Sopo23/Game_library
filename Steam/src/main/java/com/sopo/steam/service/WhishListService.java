@@ -13,12 +13,15 @@ import java.util.List;
 
 @Service
 public class WhishListService {
-    @Autowired
-    public WhishlistRepository whishlistRepository;
-    @Autowired
-    public GameRepository gameRepository;
-    @Autowired
-    public CustomerRepository customerRepository;
+    private final WhishlistRepository whishlistRepository;
+    private final GameRepository gameRepository;
+    private final CustomerRepository customerRepository;
+
+    public WhishListService(WhishlistRepository whishlistRepository, GameRepository gameRepository, CustomerRepository customerRepository) {
+        this.whishlistRepository = whishlistRepository;
+        this.gameRepository = gameRepository;
+        this.customerRepository = customerRepository;
+    }
 
     public Whishlist createWhishlist(String username){
         Customer customer=customerRepository.findCustomerByUsername(username);
